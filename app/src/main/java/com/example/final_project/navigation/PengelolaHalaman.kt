@@ -17,6 +17,7 @@ import com.example.final_project.ui.add.DestinasiEntry
 import com.example.final_project.ui.detail.DetailDestination
 import com.example.final_project.ui.detail.DetailScreen
 import com.example.final_project.ui.edit.EditDestination
+import com.example.final_project.ui.edit.EditScreen
 import com.example.final_project.ui.home.DestinasiMenu
 import com.example.final_project.ui.home.HomeScreen
 
@@ -66,8 +67,22 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     navigateBack = { navController.popBackStack() },
                     navigateToEditItem = {
                         navController.navigate("${EditDestination.route}/$laptopId")
-                        println("kontakId: $laptopId")
+                        println("laptopId: $laptopId")
                     }
+                )
+            }
+        }
+        composable(
+            route = EditDestination.routeWithArgs,
+            arguments = listOf(navArgument(EditDestination.laptopId) {
+                type = NavType.StringType
+            })
+        ) { backStackEntry ->
+            val laptopId = backStackEntry.arguments?.getString(EditDestination.laptopId)
+            laptopId?.let {
+                EditScreen(
+                    navigateBack = { navController.popBackStack() },
+                    onNavigateUp = { navController.navigateUp() }
                 )
             }
         }

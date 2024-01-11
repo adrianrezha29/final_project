@@ -165,7 +165,7 @@ fun ItemDetails(
                 )
             )
             ItemDetailsRow(
-                labelResID ="No. Telpon",
+                labelResID ="Harga",
                 itemDetail = laptop.harga,
                 modifier = Modifier.padding(
                     horizontal = 12.dp

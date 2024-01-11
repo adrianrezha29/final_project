@@ -79,7 +79,7 @@ fun AuthenticationScreen(
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = {
-                navController.navigate(DestinasiEntry.route)
+                navController.navigate(DestinasiMenu.route)
                 authviewmodel.signInWithEmailAndPassword(email, password)},
             modifier = Modifier
                 .fillMaxWidth()

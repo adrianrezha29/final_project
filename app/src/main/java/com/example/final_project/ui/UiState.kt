@@ -37,6 +37,6 @@ fun Laptop.toUIStateLaptop(): AddUIState = AddUIState(
 )
 
 data class HomeUIState(
-    val listKontak: List<Laptop> = listOf(),
+    val listLaptop: List<Laptop> = listOf(),
     val dataLength: Int = 0
 )

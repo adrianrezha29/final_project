@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -26,12 +27,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.final_project.R
+import com.example.final_project.navigation.DestinasiNavigasi
+import com.example.final_project.tampilan.LoginDestination
 import com.example.final_project.ui.theme.Final_projectTheme
+
+object HomeDestination : DestinasiNavigasi {
+    override val route = "item_edit"
+    override val titleRes ="Laptop"
+}
 
 @Composable
 fun HalamanHome(
-    onNextButtonClicked: () -> Unit
+    navController: NavController
 ) {
     val image = painterResource(R.drawable.images)
     Column(
@@ -57,7 +66,7 @@ fun HalamanHome(
                     contentScale = ContentScale.Crop
                 )
                 Text(
-                    text = "Es Teh",
+                    text = "Laptop",
                     color = Color.DarkGray,
                     fontFamily = FontFamily.Cursive,
                     fontSize = 35.sp,
@@ -65,7 +74,7 @@ fun HalamanHome(
                         .align(Alignment.CenterHorizontally)
                 )
                 Text(
-                    text = "Gembrunggung",
+                    text = "Republik",
                     color = Color.DarkGray,
                     fontFamily = FontFamily.Cursive,
                     fontStyle = FontStyle.Italic,
@@ -84,18 +93,10 @@ fun HalamanHome(
         ) {
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = onNextButtonClicked
+                onClick = { navController.navigate(LoginDestination.route) }
             ) {
                 Text(stringResource(R.string.next))
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewHalamanHome() {
-    Final_projectTheme {
-        HalamanHome(onNextButtonClicked = {})
     }
 }

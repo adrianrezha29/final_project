@@ -1,10 +1,14 @@
 package com.example.final_project.tampilan
 
 import androidx.lifecycle.ViewModel
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-class authviewmodel : ViewModel() {
+
+class authviewmodel : ViewModel(
+) {
+
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun createUserWithEmailAndPassword(email: String, password: String) {

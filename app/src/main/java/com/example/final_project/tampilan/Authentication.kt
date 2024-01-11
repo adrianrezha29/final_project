@@ -22,11 +22,22 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.final_project.navigation.DestinasiNavigasi
+import com.example.final_project.ui.add.DestinasiEntry
+import com.example.final_project.ui.home.DestinasiMenu
 import com.example.final_project.ui.theme.Final_projectTheme
+
+object LoginDestination : DestinasiNavigasi {
+    override val route = "item_edit"
+    override val titleRes ="Edit Laptop"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AuthenticationScreen(authviewmodel: authviewmodel = viewModel()) {
+fun AuthenticationScreen(
+    navController: NavController,
+    authviewmodel: authviewmodel = viewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -57,7 +68,8 @@ fun AuthenticationScreen(authviewmodel: authviewmodel = viewModel()) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { authviewmodel.createUserWithEmailAndPassword(email, password) },
+            onClick = {
+                authviewmodel.createUserWithEmailAndPassword(email, password) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
@@ -66,7 +78,9 @@ fun AuthenticationScreen(authviewmodel: authviewmodel = viewModel()) {
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
-            onClick = { authviewmodel.signInWithEmailAndPassword(email, password) },
+            onClick = {
+                navController.navigate(DestinasiEntry.route)
+                authviewmodel.signInWithEmailAndPassword(email, password)},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
@@ -76,10 +90,3 @@ fun AuthenticationScreen(authviewmodel: authviewmodel = viewModel()) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewAAuthenticationScreen() {
-    Final_projectTheme {
-        AuthenticationScreen()
-    }
-}

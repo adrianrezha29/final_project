@@ -32,6 +32,5 @@ class HomeViewModel(private val laptopRepository: LaptopRepository) : ViewModel(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
             initialValue = HomeUIState()
-
         )
 }

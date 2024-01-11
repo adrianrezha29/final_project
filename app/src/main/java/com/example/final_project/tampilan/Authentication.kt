@@ -19,8 +19,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.final_project.ui.theme.Final_projectTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,3 +76,10 @@ fun AuthenticationScreen(authviewmodel: authviewmodel = viewModel()) {
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun PreviewAAuthenticationScreen() {
+    Final_projectTheme {
+        AuthenticationScreen()
+    }
+}
